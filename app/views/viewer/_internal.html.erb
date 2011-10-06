@@ -1,0 +1,6 @@
+
+<select id="tabletable_<%= @dbname %>" onchange="selectDB('<%= @dbname %>');" size=<%= @table_list.size %>">
+  <% @table_list.each do |table| %>
+  <option value="<%= table[0] %>"><%= table[0] %></option>
+  <% end %>
+</select>

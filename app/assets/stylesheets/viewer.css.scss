@@ -1,3 +1,22 @@
 // Place all the styles related to the viewer controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#tabset {
+    position:relative;
+    width: 100%;
+}
+
+#header {
+    position:relative;
+    top:0;
+    left:0;
+}
+
+#schemaarea {
+    position:relative;
+    top:0;
+    right:0;
+}
+
+

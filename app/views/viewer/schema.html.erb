@@ -1,22 +1,19 @@
 
 
-<div id="tabs" class="ui-tabs ui-widget ui-widget-content ui-corner-all">
-  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all">
-    <% i = 0 %>
-    <%@database_list.each do |database| %>
-    <% i+=1 %>
-    <li><a href="#tabs-<%=i%>"><%= database[0] %></a></li>
-    <% end %>
-  </ul>
+<div id="tabset" class="ui-tabs ui-widget ui-widget-content ui-corner-all">
 
-  <% j = 0 %>
-  <%@database_list.each do |database| %>
-  <% j+=1 %>
-  <div id="tabs-<%=j%>">
-    <p>
-      <%= database[0] %>
-    </p>
+  <div id="header">
+      <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all">
+        <%@database_list.each do |database| %>
+        <li><a href="/viewer/db/db?dbname=<%=database[0] %>"><span><%= database[0] %></span></a></li>
+        <% end %>
+      </ul>
+      <div id="schemaarea">
+      </div>
   </div>
-  <% end %>
+
+
+
 </div>
+
 
