@@ -2,7 +2,7 @@
 
 <div id="tabset" class="ui-tabs ui-widget ui-widget-content ui-corner-all">
 
-  <div id="header">
+  <div id="page">
       <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all">
         <%@database_list.each do |database| %>
         <li><a href="/viewer/db/db?dbname=<%=database[0] %>"><span><%= database[0] %></span></a></li>

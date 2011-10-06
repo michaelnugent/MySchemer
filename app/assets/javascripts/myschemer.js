@@ -15,7 +15,7 @@ function selectDB(dbname) {
         "bProcessing": true,
         "bJQueryUI": true,
         "bFilter": false,
-        "bAutoWidth": false,
+        "bAutoWidth": true,
         "bPaginate": false,
         "sAjaxSource":  "/viewer/table/table?tablename="+val,
         "aoColumns": [

@@ -25,10 +25,8 @@ class ViewerController < ApplicationController
       inner['extra'] = item[5]
       arr << inner
     end
-    puts "mike"
     hash = {}
     hash["aaData"] = arr.as_json
-    puts hash
     render :json => hash.as_json
   end
 
