@@ -1,0 +1,22 @@
+
+
+<div id="tabs" class="ui-tabs ui-widget ui-widget-content ui-corner-all">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all">
+    <% i = 0 %>
+    <%@database_list.each do |database| %>
+    <% i+=1 %>
+    <li><a href="#tabs-<%=i%>"><%= database[0] %></a></li>
+    <% end %>
+  </ul>
+
+  <% j = 0 %>
+  <%@database_list.each do |database| %>
+  <% j+=1 %>
+  <div id="tabs-<%=j%>">
+    <p>
+      <%= database[0] %>
+    </p>
+  </div>
+  <% end %>
+</div>
+

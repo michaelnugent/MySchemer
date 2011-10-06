@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>MySchemer</title>
+  <%= stylesheet_link_tag    "application" %>
+  <%= stylesheet_link_tag    "sunny/jquery-ui-1.8.13.custom" %>
+  <%= javascript_include_tag "application" %>
+  <%= javascript_include_tag "jquery.dataTables" %>
+  <%= javascript_include_tag "myschemer" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<%= yield %>
+
+</body>
+</html>
