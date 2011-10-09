@@ -5,6 +5,8 @@ class ViewerController < ApplicationController
 
   def db
     @dbname = params[:dbname]
+    @tabindex = params[:tabindex].to_i+1
+    puts "db tabindex #{@tabindex}"
     ActiveRecord::Base.establish_connection( {:adapter => "mysql2", :database => @dbname} )
     @table_list = ActiveRecord::Base.connection.select_rows("show tables")
     render :partial => 'internal'
@@ -16,6 +18,7 @@ class ViewerController < ApplicationController
 
     arr = []
     @table_schema.each do |item|
+      puts item
       inner = {}
       inner['field'] = item[0]
       inner['type'] = item[1]

@@ -3,16 +3,19 @@
 $(document).ready(function() {
     $('#tabset').tabs();
     $('#tabset').bind('tabsselect', function(event, ui) {
-        $("#schemaarea").html("");
+        $("#schemaarea-" + ui.index+1).html("");
     });
 });
 
-function selectDB(dbname) {
+function selectDB(dbname, tabindex) {
+    console.log("dbname " + dbname + " tabindex " + tabindex);
     var val = document.getElementById("tabletable_" + dbname).value;
-    $("#schemaarea").html("");
-    $("#schemaarea").html('<table id="schematable" border="1"><thead><tr><th>Field</th><th>Type</th><th>Null</th><th>Key</th><th>Default</th><th>Extra</th></tr></thead></table>')
-    $("#schematable").dataTable( {
-        "bProcessing": true,
+    console.log("val " + val);
+    $("#schemaarea-" + tabindex).html("");
+    $("#schemaarea-" + tabindex).html('<table id="schematable-' + tabindex + '" border="1"><thead><tr><th>Field</th><th>Type</th><th>Null</th><th>Key</th><th>Default</th><th>Extra</th></tr></thead></table>');
+    console.log("firing ajax");
+    $("#schematable-" + tabindex).dataTable( {
+        "bProcessing": false,
         "bJQueryUI": true,
         "bFilter": false,
         "bAutoWidth": true,
@@ -27,6 +30,9 @@ function selectDB(dbname) {
             { "mDataProp": "extra" }
         ]
     });
+    var h = $(window).height();
+    $("#tabset").css('height', h-95);
+    $(".ui-tabs-panel").css('height', h-140);
 
 };
 
