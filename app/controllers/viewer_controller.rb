@@ -6,7 +6,6 @@ class ViewerController < ApplicationController
   def db
     @dbname = params[:dbname]
     @tabindex = params[:tabindex].to_i+1
-    puts "db tabindex #{@tabindex}"
     ActiveRecord::Base.establish_connection( {:adapter => "mysql2", :database => @dbname} )
     @table_list = ActiveRecord::Base.connection.select_rows("show tables")
     render :partial => 'internal'
@@ -16,20 +15,9 @@ class ViewerController < ApplicationController
     @table_choice = params[:tablename]
     @table_schema = ActiveRecord::Base.connection.select_rows("show columns from #{@table_choice}")
 
-    arr = []
-    @table_schema.each do |item|
-      puts item
-      inner = {}
-      inner['field'] = item[0]
-      inner['type'] = item[1]
-      inner['null'] = item[2]
-      inner['key'] = item[3]
-      inner['default'] = item[4]
-      inner['extra'] = item[5]
-      arr << inner
-    end
     hash = {}
-    hash["aaData"] = arr.as_json
+    hash["aaData"] = @table_schema.map { |u| Hash[ field: u[0], type: u[1], null: u[2], key: u[3], default: u[4], extra: u[5] ]};
+
     render :json => hash.as_json
   end
 
