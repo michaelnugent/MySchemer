@@ -30,9 +30,5 @@ function selectDB(dbname, tabindex) {
             { "mDataProp": "extra" }
         ]
     });
-    var h = $(window).height();
-    $("#tabset").css('height', h-95);
-    $(".ui-tabs-panel").css('height', h-140);
-
 };
 
