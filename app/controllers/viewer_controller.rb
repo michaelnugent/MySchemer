@@ -6,7 +6,14 @@ class ViewerController < ApplicationController
   def db
     @dbname = params[:dbname]
     @tabindex = params[:tabindex].to_i+1
-    ActiveRecord::Base.establish_connection( {:adapter => "mysql2", :database => @dbname} )
+    config = ActiveRecord::Base.configurations[Rails.env]
+    ActiveRecord::Base.establish_connection(  {
+        :adapter => config['adapter'],
+        :host => config['host'],
+        :username => config['username'],
+        :password => config['password'],
+        :database => @dbname
+    } )
     @table_list = ActiveRecord::Base.connection.select_rows("show tables")
     render :partial => 'internal'
   end
